@@ -75,14 +75,23 @@ public class Cliente {
 		this.pronomeTratamento = pronomeTratamento;
 	}
 
+	public Atendimento getAtendimento() {
+		return atendimento;
+	}
+
+	public void setAtendimento(Atendimento atendimento) {
+		this.atendimento = atendimento;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente{" +
-				"CPF=" + cpf +
+				"cpf=" + cpf +
 				", nome='" + nome + '\'' +
 				", telefone=" + telefone +
 				", email='" + email + '\'' +
 				", pronomeTratamento=" + pronomeTratamento +
+				", atendimento=" + atendimento +
 				'}';
 	}
 }

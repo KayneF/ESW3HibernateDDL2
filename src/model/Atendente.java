@@ -52,4 +52,21 @@ public class Atendente extends Funcionario {
         this.emailAtendente = emailAtendente;
     }
 
+    public Atendimento getAtendimento() {
+        return atendimento;
+    }
+
+    public void setAtendimento(Atendimento atendimento) {
+        this.atendimento = atendimento;
+    }
+
+    @Override
+    public String toString() {
+        return "Atendente{" +
+                "horarioEntrada=" + horarioEntrada +
+                ", horarioSaida=" + horarioSaida +
+                ", emailAtendente='" + emailAtendente + '\'' +
+                ", atendimento=" + atendimento +
+                '}';
+    }
 }
