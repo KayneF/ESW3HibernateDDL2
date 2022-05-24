@@ -21,11 +21,6 @@ public class Atendente extends Funcionario {
     @NotNull
     private String emailAtendente;
 
-    @ManyToOne(targetEntity = Atendimento.class)
-    @JoinColumn(name = "atendimento_cliente", referencedColumnName = "atendimento_cliente")
-    @NotNull
-    private Atendimento atendimento;
-
 	// -----------------------------------------------------
 
     public LocalTime getHorarioEntrada() {
@@ -52,21 +47,12 @@ public class Atendente extends Funcionario {
         this.emailAtendente = emailAtendente;
     }
 
-    public Atendimento getAtendimento() {
-        return atendimento;
-    }
-
-    public void setAtendimento(Atendimento atendimento) {
-        this.atendimento = atendimento;
-    }
-
     @Override
     public String toString() {
         return "Atendente{" +
                 "horarioEntrada=" + horarioEntrada +
                 ", horarioSaida=" + horarioSaida +
                 ", emailAtendente='" + emailAtendente + '\'' +
-                ", atendimento=" + atendimento +
                 '}';
     }
 }

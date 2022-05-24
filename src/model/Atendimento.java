@@ -1,9 +1,6 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
@@ -13,24 +10,54 @@ import java.time.LocalDateTime;
 public class Atendimento {
 
     @Id
-    @Column(name = "atendimento_cliente")
+    @Column(name = "data_atendimento")
     @NotNull
-    private LocalDateTime atendimentoCliente;
+    private LocalDateTime dataAtendimento;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "atend_cliente")
+    @NotNull
+    private Cliente atendCliente;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "atend_atendente")
+    @NotNull
+    private Atendente atendAtendente;
 
     // -----------------------------------------------------
 
-    public LocalDateTime getAtendimentoCliente() {
-        return atendimentoCliente;
+    public LocalDateTime getDataAtendimento() {
+        return dataAtendimento;
     }
 
-    public void setAtendimentoCliente(LocalDateTime atendimentoCliente) {
-        this.atendimentoCliente = atendimentoCliente;
+    public void setDataAtendimento(LocalDateTime dataAtendimento) {
+        this.dataAtendimento = dataAtendimento;
+    }
+
+    public Cliente getAtendCliente() {
+        return atendCliente;
+    }
+
+    public void setAtendCliente(Cliente atendCliente) {
+        this.atendCliente = atendCliente;
+    }
+
+    public Atendente getAtendAtendente() {
+        return atendAtendente;
+    }
+
+    public void setAtendAtendente(Atendente atendAtendente) {
+        this.atendAtendente = atendAtendente;
     }
 
     @Override
     public String toString() {
         return "Atendimento{" +
-                "atendimentoCliente=" + atendimentoCliente +
+                "dataAtendimento=" + dataAtendimento +
+                ", atendCliente=" + atendCliente +
+                ", atendAtendente=" + atendAtendente +
                 '}';
     }
 }

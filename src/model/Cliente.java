@@ -21,17 +21,10 @@ public class Cliente {
 	private int telefone;
 
 	@Column(name = "email_cliente", length = 100)
-	@NotNull
 	private String email;
 
 	@Column(name = "pronome_trat", length = 3)
-	@NotNull
 	private PronomeTratamento pronomeTratamento;
-
-	@ManyToOne(targetEntity = Atendimento.class)
-	@JoinColumn(name = "atendimento_cliente", referencedColumnName = "atendimento_cliente")
-	@NotNull
-	private Atendimento atendimento;
 
 	// -----------------------------------------------------
 
@@ -75,14 +68,6 @@ public class Cliente {
 		this.pronomeTratamento = pronomeTratamento;
 	}
 
-	public Atendimento getAtendimento() {
-		return atendimento;
-	}
-
-	public void setAtendimento(Atendimento atendimento) {
-		this.atendimento = atendimento;
-	}
-
 	@Override
 	public String toString() {
 		return "Cliente{" +
@@ -91,7 +76,6 @@ public class Cliente {
 				", telefone=" + telefone +
 				", email='" + email + '\'' +
 				", pronomeTratamento=" + pronomeTratamento +
-				", atendimento=" + atendimento +
 				'}';
 	}
 }
