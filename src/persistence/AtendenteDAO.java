@@ -4,12 +4,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import model.Atendente;
-import model.Cliente;
-import model.PronomeTratamento;
 import org.hibernate.SessionFactory;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +56,7 @@ public class AtendenteDAO implements InterfaceDAO<Atendente> {
     public List lista() {
         List<Atendente> atentendes = new ArrayList<Atendente>();
         StringBuffer buffer = new StringBuffer();
-        buffer.append("SELECT nome_funcionario, data_nascimento, salario, telefone_funcionario");
+        buffer.append("SELECT id_funcionario, nome_funcionario, data_nascimento, salario, telefone_funcionario, ");
         buffer.append("hora_entrada, hora_saida, email_atendente ");
         buffer.append("FROM funcionario ");
         buffer.append("ORDER BY nome_funcionario");
@@ -68,13 +65,14 @@ public class AtendenteDAO implements InterfaceDAO<Atendente> {
         List<Object[]> lista = query.getResultList();
         for (Object[] obj : lista) {
             Atendente atendente = new Atendente();
+            atendente.setId(Integer.parseInt(obj[0].toString()));
             atendente.setNome(obj[1].toString());
             atendente.setNascimento(LocalDate.parse(obj[2].toString()));
-            atendente.setSalario(Double.parseDouble(obj[3].toString()));
-            atendente.setTelefone(Integer.parseInt(obj[4].toString()));
-            atendente.setHorarioEntrada(LocalTime.parse(obj[5].toString()));
-            atendente.setHorarioSaida(LocalTime.parse(obj[5].toString()));
-            atendente.setEmailAtendente(obj[6].toString());
+            atendente.setSalario(Float.parseFloat(obj[3].toString()));
+            atendente.setTelefone(obj[4].toString());
+            atendente.setHorarioEntrada(Integer.parseInt(obj[5].toString()));
+            atendente.setHorarioSaida(Integer.parseInt(obj[6].toString()));
+            atendente.setEmailAtendente(obj[7].toString());
 
             atentendes.add(atendente);
         }

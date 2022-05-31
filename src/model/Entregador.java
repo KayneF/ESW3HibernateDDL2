@@ -11,27 +11,27 @@ public class Entregador extends Funcionario {
 
     @Column(name = "numero_cnh", length = 12)
     @NotNull
-    private int numeroCNH;
+    private String numeroCNH;
 
     @Column(name = "categoria_cnh", length = 3)
     @NotNull
-    private CategoriaCNH categoriaCNH;
+    private String categoriaCNH;
 
     // -----------------------------------------------------
 
-    public int getNumeroCNH() {
+    public String getNumeroCNH() {
         return numeroCNH;
     }
 
-    public void setNumeroCNH(int numeroCNH) {
+    public void setNumeroCNH(String numeroCNH) {
         this.numeroCNH = numeroCNH;
     }
 
-    public CategoriaCNH getCategoriaCNH() {
+    public String getCategoriaCNH() {
         return categoriaCNH;
     }
 
-    public void setCategoriaCNH(CategoriaCNH categoriaCNH) {
+    public void setCategoriaCNH(String categoriaCNH) {
         this.categoriaCNH = categoriaCNH;
     }
 

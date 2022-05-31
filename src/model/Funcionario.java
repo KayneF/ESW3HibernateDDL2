@@ -8,11 +8,12 @@ import java.time.LocalDate;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "funcionario")
+//@MappedSuperclass
 public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", length = 10)
+    @Column(name = "id", length = 10, unique = true)
     @NotNull
     private int id;
 
@@ -26,11 +27,11 @@ public class Funcionario {
 
     @Column(name = "salario", length = 10)
     @NotNull
-    private double salario;
+    private float salario;
 
     @Column(name = "telefone_funcionario", length = 11)
     @NotNull
-    private int telefone;
+    private String telefone;
 
 	// -----------------------------------------------------
 
@@ -58,19 +59,19 @@ public class Funcionario {
         this.nascimento = nascimento;
     }
 
-    public double getSalario() {
+    public float getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(float salario) {
         this.salario = salario;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
