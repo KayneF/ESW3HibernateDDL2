@@ -2,7 +2,7 @@ package persistence;
 
 import java.util.List;
 
-public interface InterfaceDAO<T> {
+public interface InterfaceDao<T> {
 
     public void insere(T t);
     public void modifica(T t);

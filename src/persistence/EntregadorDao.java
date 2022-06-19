@@ -3,79 +3,78 @@ package persistence;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
-import model.Atendente;
+import model.Entregador;
 import org.hibernate.SessionFactory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AtendenteDAO implements InterfaceDAO<Atendente> {
+public class EntregadorDao implements InterfaceDao<Entregador> {
 
     private SessionFactory sf;
 
-    public AtendenteDAO(SessionFactory sf){
+    public EntregadorDao(SessionFactory sf){
         this.sf = sf;
     }
 
     @Override
-    public void insere(Atendente atendente) {
+    public void insere(Entregador entregador) {
         EntityManager entityManager = sf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        entityManager.persist(atendente);
+        entityManager.persist(entregador);
         transaction.commit();
     }
 
     @Override
-    public void modifica(Atendente atendente) {
+    public void modifica(Entregador entregador) {
         EntityManager entityManager = sf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        entityManager.merge(atendente);
+        entityManager.merge(entregador);
         transaction.commit();
     }
 
     @Override
-    public void remove(Atendente atendente) {
+    public void remove(Entregador entregador) {
         EntityManager entityManager = sf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        entityManager.remove(atendente);
+        entityManager.remove(entregador);
         transaction.commit();
     }
 
     @Override
-    public Atendente busca(Atendente atendente) {
+    public Entregador busca(Entregador entregador) {
         EntityManager entityManager = sf.createEntityManager();
-        atendente = entityManager.find(Atendente.class, atendente.getId());
-        return atendente;
+        entregador = entityManager.find(Entregador.class, entregador.getId());
+        return entregador;
     }
 
     @Override
-    public List lista() {
-        List<Atendente> atentendes = new ArrayList<Atendente>();
+    public List<Entregador> lista() {
+        List<Entregador> entregadores = new ArrayList<Entregador>();
         StringBuffer buffer = new StringBuffer();
-        buffer.append("SELECT id_funcionario, nome_funcionario, data_nascimento, salario, telefone_funcionario, ");
-        buffer.append("hora_entrada, hora_saida, email_atendente ");
+        buffer.append("SELECT nome_funcionario, data_nascimento, salario, telefone_funcionario, ");
+        buffer.append("numero_cnh, categoria_cnh ");
         buffer.append("FROM funcionario ");
         buffer.append("ORDER BY nome_funcionario");
         EntityManager entityManager = sf.createEntityManager();
         Query query = entityManager.createNativeQuery(buffer.toString());
         List<Object[]> lista = query.getResultList();
         for (Object[] obj : lista) {
-            Atendente atendente = new Atendente();
-            atendente.setId(Integer.parseInt(obj[0].toString()));
-            atendente.setNome(obj[1].toString());
-            atendente.setNascimento(LocalDate.parse(obj[2].toString()));
-            atendente.setSalario(Float.parseFloat(obj[3].toString()));
-            atendente.setTelefone(obj[4].toString());
-            atendente.setHorarioEntrada(Integer.parseInt(obj[5].toString()));
-            atendente.setHorarioSaida(Integer.parseInt(obj[6].toString()));
-            atendente.setEmailAtendente(obj[7].toString());
+            Entregador entregador = new Entregador();
+            entregador.setId(Integer.parseInt(obj[0].toString()));
+            entregador.setNome(obj[1].toString());
+            entregador.setNascimento(LocalDate.parse(obj[2].toString()));
+            entregador.setSalario(Float.parseFloat(obj[3].toString()));
+            entregador.setTelefone(obj[4].toString());
+            entregador.setNumeroCNH(obj[5].toString());
+            entregador.setCategoriaCNH(obj[6].toString());
 
-            atentendes.add(atendente);
+            entregadores.add(entregador);
         }
-        return atentendes;
+        return entregadores;
     }
 }

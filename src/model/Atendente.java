@@ -17,7 +17,7 @@ public class Atendente extends Funcionario {
     @NotNull
     private int horarioSaida;
 
-    @Column(name = "email_atendente", length = 100)
+    @Column(name = "email_atendente", length = 50)
     @NotNull
     private String emailAtendente;
 

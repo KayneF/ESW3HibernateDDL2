@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteDao implements InterfaceDAO<Cliente> {
+public class ClienteDao implements InterfaceDao<Cliente> {
 
     private SessionFactory sf;
 

@@ -15,7 +15,7 @@ public class Cliente {
 	@NotNull
 	private String cpf;
 
-	@Column(name = "nome_cliente", length = 100)
+	@Column(name = "nome_cliente", length = 50)
 	@NotNull
 	private String nome;
 
@@ -23,7 +23,7 @@ public class Cliente {
 	@NotNull
 	private String telefone;
 
-	@Column(name = "email_cliente", length = 100)
+	@Column(name = "email_cliente", length = 50)
 	private String email;
 
 	@Column(name = "pronome_tratamento", length = 5)

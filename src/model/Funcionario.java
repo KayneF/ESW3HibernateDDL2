@@ -13,11 +13,11 @@ public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", length = 10, unique = true)
+    @Column(name = "id_funcionario", length = 5, unique = true)
     @NotNull
     private int id;
 
-    @Column(name = "nome_funcionario", length = 100)
+    @Column(name = "nome_funcionario", length = 50)
     @NotNull
     private String nome;
 
@@ -25,7 +25,7 @@ public class Funcionario {
     @NotNull
     private LocalDate nascimento;
 
-    @Column(name = "salario", length = 10)
+    @Column(name = "salario", length = 7)
     @NotNull
     private float salario;
 

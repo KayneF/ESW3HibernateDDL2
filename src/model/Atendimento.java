@@ -16,15 +16,15 @@ public class Atendimento {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "atend_cliente")
+    @JoinColumn(name = "cpf_cliente")
     @NotNull
-    private Cliente atendCliente;
+    private Cliente cliente;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "atend_atendente")
+    @JoinColumn(name = "id_funcionario")
     @NotNull
-    private Atendente atendAtendente;
+    private Atendente atendente;
 
     // -----------------------------------------------------
 
@@ -36,28 +36,28 @@ public class Atendimento {
         this.dataAtendimento = dataAtendimento;
     }
 
-    public Cliente getAtendCliente() {
-        return atendCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setAtendCliente(Cliente atendCliente) {
-        this.atendCliente = atendCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Atendente getAtendAtendente() {
-        return atendAtendente;
+    public Atendente getAtendente() {
+        return atendente;
     }
 
-    public void setAtendAtendente(Atendente atendAtendente) {
-        this.atendAtendente = atendAtendente;
+    public void setAtendente(Atendente atendente) {
+        this.atendente = atendente;
     }
 
     @Override
     public String toString() {
         return "Atendimento{" +
                 "dataAtendimento=" + dataAtendimento +
-                ", atendCliente=" + atendCliente +
-                ", atendAtendente=" + atendAtendente +
+                ", atendCliente=" + cliente +
+                ", atendAtendente=" + atendente +
                 '}';
     }
 }

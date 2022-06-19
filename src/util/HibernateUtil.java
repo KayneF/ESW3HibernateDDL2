@@ -27,8 +27,8 @@ public class HibernateUtil {
 				Properties prop = new Properties();
 				prop.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
 				prop.put(Environment.URL, "jdbc:mysql://localhost:3306/HibernateDDL2?createDatabaseIfNotExist=true");
-				prop.put(Environment.USER, "root");
-				prop.put(Environment.PASS, "rootPass00--");
+				prop.put(Environment.USER, "jed");
+				prop.put(Environment.PASS, "321321");
 				prop.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
 				prop.put(Environment.SHOW_SQL, "true");
 				prop.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
